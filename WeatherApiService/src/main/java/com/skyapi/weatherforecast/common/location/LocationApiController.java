@@ -33,4 +33,14 @@ public class LocationApiController {
 
         return new ResponseEntity<>(listLocation, HttpStatus.OK);
     }
+
+    @GetMapping("/{code}")
+    public ResponseEntity<?> getLocation(@PathVariable("code") String code){
+        Location location = locationService.get(code);
+
+        if (location == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(location);
+    }
 }

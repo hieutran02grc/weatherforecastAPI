@@ -19,4 +19,8 @@ public class LocationService {
         return repository.findUntrashed();
     }
 
+    public Location get(String code){
+        return repository.findByCode(code);
+    }
+
 }
