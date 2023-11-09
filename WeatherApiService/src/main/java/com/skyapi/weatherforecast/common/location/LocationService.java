@@ -44,4 +44,12 @@ public class LocationService {
         return repository.save(location);
     }
 
+    public void detele(String code) throws LocationNotFoundException {
+        if (!repository.existsById(code)){
+            throw new LocationNotFoundException("no location found with given code: " + code);
+        };
+
+        repository.trashedByCode(code);
+    }
+
 }
